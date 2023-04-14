@@ -38,7 +38,9 @@ Puehlinmuistio data annetaan parametrina konstruktorissa. Jos parametri puuttuu,
 
 ### **haeTyypit**
 
-palauttaa kaikki puhelintyypit taulukossa. Tyyppi lisätään taulukkon vain kerran. Jos data ei sisällä puhelimia tai henkilöitä, palautetaan tyhjä taulukko [].
+palauttaa kaikki puhelintyypit taulukossa lajiteltuna esiintymisjärjestyksessä. Tyyppi lisätään taulukkon vain kerran. Jos data ei sisällä puhelimia (puhelimet-kenttä puuttuu tai se on tyhä taulukko) tai henkilöitä, palautetaan tyhjä taulukko [].
+Jos puhelimelta typpi on tyhjä merkkijono, ei tyyppiä lisätä taulukkoon,
+ei tyyppiä
 
 Esimerkiksi:
 ```json
