@@ -26,4 +26,28 @@ module.exports = class Puhelinmuistio{
 
         return loydetyt
     }
+
+    haeHenkilönNumerotTyypilla(etunimi, sukunimi, tyyppi) {
+        if (etunimi && sukunimi && tyyppi) {
+            const loydetyt = [];
+
+            for (const henkilo of this.#puhelindata) {
+                if (henkilo.etunimi === etunimi && 
+                    henkilo.sukunimi === sukunimi && 
+                    henkilo.puhelimet) {
+                    for (const puhelin of henkilo.puhelimet) {
+                        if (puhelin.tyyppi === tyyppi) {
+                            loydetyt.push(puhelin.numero)
+                        }
+                    }
+                    return loydetyt
+                }
+            }
+
+            return []
+        }
+        else {
+            throw new Error('Parametri puuttuu');
+        }
+    }
 }

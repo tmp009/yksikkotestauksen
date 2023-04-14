@@ -103,4 +103,60 @@ describe('Testataan metodi haeTyypit', ()=>{
     })
 });
 
-// describe('Testataan')
+describe('Testataan metodi haeHenkilönNumerotTyypilla yksittäin', ()=>{
+    const muistio = new Puhelinmuistio(puhelimet);
+
+    test('1. haetaan Leila Hökin työnumerot', ()=>{
+        expect(muistio.haeHenkilönNumerotTyypilla('Leila', 'Hökki', 'työ')).toEqual(["87654321", "050403020"]);
+    });
+
+    test('2. haetaan Matti Puron mobiilinumero', ()=>{
+        expect(muistio.haeHenkilönNumerotTyypilla('Matti', 'Puro', 'mobiili')).toEqual(["05012345"]);
+    });
+
+    test('3. haetaan Leila Hökin kotinumero', ()=>{
+        expect(muistio.haeHenkilönNumerotTyypilla('Leila', 'Hökki', 'koti')).toEqual(["12345678"]);
+    });
+
+    describe('4. Väärä tyyppi tai nimi palauttaa tyhjän taulukon', ()=>{
+        test('testaaan arvolla etunimi=Matti, sukunimi=Puro, tyyppi=x', ()=>{
+            expect(muistio.haeHenkilönNumerotTyypilla('Matti', 'Puro', 'x')).toEqual([])
+        });
+        
+        test('testaaan arvolla etunimi=Matti, sukunimi=x, tyyppi=mobiili', ()=>{
+            expect(muistio.haeHenkilönNumerotTyypilla('Matti', 'x', 'mobiili')).toEqual([])
+        });
+
+        test('testaaan arvolla etunimi=x, sukunimi=Puro, tyyppi=mobiili', ()=>{
+            expect(muistio.haeHenkilönNumerotTyypilla('x', 'Puro', 'mobiili')).toEqual([])
+        });
+    });
+
+    describe('5. Parametrit puuttuu', ()=>{
+        test('yksi parametri puuttuu', ()=>{
+            expect(()=>muistio.haeHenkilönNumerotTyypilla('Matti', 'Puro'))
+                .toThrow('Parametri puuttuu');
+        });
+
+        test('kaksi parametria puuttuu', ()=>{
+            expect(()=>muistio.haeHenkilönNumerotTyypilla('Matti'))
+                .toThrow('Parametri puuttuu');
+        });
+
+        test('kaikki parametrit puuttuu', ()=>{
+            expect(()=>muistio.haeHenkilönNumerotTyypilla())
+                .toThrow('Parametri puuttuu');
+        });
+    });
+
+});
+
+
+
+// describe('Testataan metodi haeHenkilönNumerotTyypilla testEach', ()=>{
+//     const muistio = new Puhelinmuistio(puhelimet);
+
+//     test('haetaan Leila Hökin työnumerot', ()=>{
+//         expect()
+//     })
+// });
