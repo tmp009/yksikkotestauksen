@@ -2,7 +2,7 @@
 
 ## data
 
-Puhelin data on json taulukossa. Puhelinnumero voi olla rekisterissä vain kerran ja sen voi omistaa vain yksi henkilö.
+Puhelin data on json taulukossa. Puhelinnumero voi olla rekisterissä vain kerran ja sen voi omistaa vain yksi henkilö. Sama henkilö voi olla vain kerran rekisterissä.
 
 ### puhelimet.json
 ```json
@@ -69,9 +69,7 @@ palauttaa taulukon olioita. Oliossa on nimitiedot ja puhelinumero muodossa:
 ```json
 [
     {"etunimi":"", "sukunimi":"","numero":{"tyyppi":"","puh":""}},
-    {"etunimi":"", "sukunimi":"","numero":{"tyyppi":"","puh":""}},
     {"etunimi":"", "sukunimi":"","numero":{"tyyppi":"","puh":""}}
-
 ]
 ```
 
@@ -98,3 +96,20 @@ palauttaa numeron omistajan etu- ja sukunimen oliossa, joka on muotoa:
 
 Jos numeroa ei löydy, palauttaa `null`
 Jos parametri puuttuu, palauttaa myös `null`
+
+### **haeKaikkiNumerot()**
+
+Palauttaa kaikki puhelinnumerot taulukossa, jossa jokaisen henkilön numerot ovat muodossa
+
+```json
+{ "etunimi":"Leila", "sukunimi":"Hökki", "puhelimet":[] }
+```
+missä puhelin on muotoa:
+```json
+{"tyyppi":"", "numero":""}
+```
+
+Jos henkilöllä ei ole puhelinta (puhelimet-kenttä puuttuu tai se on tyhä taulukko), ei henkilö lisätä palautettavaan taulukkoon
+
+Jos kaikki puhelimet puuttuvat, palautetaan tyhjä taulukko
+Jos kaikki henkilöt puuttuvat, palautetaan tyhjä taulukko
