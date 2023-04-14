@@ -8,8 +8,8 @@ Puhelin data on json taulukossa. Puhelinnumero voi olla rekisterissä vain kerra
 ```json
 [
     {
-        "etunimi":"Test",
-        "sukunimi":"Person",
+        "etunimi":"Leila",
+        "sukunimi":"Hökki",
         "puhelimet":[
             {"tyyppi":"koti", "numero":"12345678"},
             {"tyyppi":"työ", "numero":"87654321"},
@@ -38,7 +38,7 @@ Puehlinmuistio data annetaan parametrina konstruktorissa. Jos parametri puuttuu,
 
 ### **haeTyypit**
 
-palauttaa kaikki puhelin tyypit taulukossa. Tyyppi lisätään taulukkon vain kerran. Jos data ei sisällä puhelimia tai henkilöitä, palautetaan tyhjä taulukko [].
+palauttaa kaikki puhelintyypit taulukossa. Tyyppi lisätään taulukkon vain kerran. Jos data ei sisällä puhelimia tai henkilöitä, palautetaan tyhjä taulukko [].
 
 Esimerkiksi:
 ```json
@@ -56,7 +56,7 @@ jos yksikin parametri puutuu, aiheuttaa poikkeuksen `'Parametri puuttuu'`
 Esimerkiksi Test Person
 
 ```js
-muistio.haeHenkilönNumerotTyypilla('Test', 'Person', 'työ');
+muistio.haeHenkilönNumerotTyypilla('Leila', 'Hökki', 'työ');
 ```
 ```json
 ["87654321", "050403020"]
@@ -83,8 +83,8 @@ Esimerkiksi kaikki työnumerot:
 
 ```json
 [
-    {"etunimi":"Test", "sukunimi":"Person","numero":{"tyyppi":"työ","puh":"87654321"}},
-    {"etunimi":"Test", "sukunimi":"Person","numero":{"tyyppi":"työ","puh":"050403020"}},
+    {"etunimi":"Leila", "sukunimi":"Hökki","numero":{"tyyppi":"työ","puh":"87654321"}},
+    {"etunimi":"Leila", "sukunimi":"Hökki","numero":{"tyyppi":"työ","puh":"050403020"}},
     {"etunimi":"Matti", "sukunimi":"Puro","numero":{"tyyppi":"työ","puh":"56789012"}}
 
 ]
