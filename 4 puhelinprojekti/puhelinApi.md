@@ -55,7 +55,7 @@ jos annetulla nimellä ei löydy henkilöä. palauttaa []
 jos annetulla tyypillä ei löydy numero, palauttaa []
 jos yksikin parametri puutuu, aiheuttaa poikkeuksen `'Parametri puuttuu'`
 
-Esimerkiksi Test Person
+Esimerkiksi Leila Hökin työnumerot
 
 ```js
 muistio.haeHenkilönNumerotTyypilla('Leila', 'Hökki', 'työ');

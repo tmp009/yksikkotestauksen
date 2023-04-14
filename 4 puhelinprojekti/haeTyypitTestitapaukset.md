@@ -7,7 +7,7 @@ Jos puhelimelta typpi on tyhjä merkkijono, ei tyyppiä lisätä taulukkoon, ei 
 
 Esimerkiksi:
 ```json
-["koti", "työ", "mobilli"]
+["koti", "työ", "mobiili"]
 ```
 
 ## Testit
@@ -25,8 +25,8 @@ rekisteri.haeTyypit();
 ```json
 [
     {
-        "etunimi":"Test",
-        "sukunimi":"Person",
+        "etunimi":"Leila",
+        "sukunimi":"Hökki",
         "puhelimet":[]
     },
     {
@@ -89,7 +89,7 @@ rekisteri.haeTyypit();
 
 palauttaa:
 ```json
-["koti", "työ", "mobilli"]
+["työ", "mobilli", "koti"]
 ```
 
 #### 5. jolatakin henkilöltä puhelimia puuttuu

@@ -1,7 +1,7 @@
 [
     {
-        "etunimi":"Test",
-        "sukunimi":"Person",
+        "etunimi":"Leila",
+        "sukunimi":"Hökki",
         "puhelimet":[
             {"tyyppi":"koti", "numero":"12345678"},
             {"tyyppi":"työ", "numero":"87654321"},
