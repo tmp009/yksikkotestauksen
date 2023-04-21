@@ -88,5 +88,17 @@ module.exports = class Puhelinmuistio{
             } // sisin for
         } // uloin for loppu
         return null; //numeroa ei löytynyt
-    }
-}
+    } // haeNimi loppu
+
+    haeKaikkiNumerot(){
+        const loydetyt=[];
+
+        for (const henkilo of this.#puhelindata) {
+            if (henkilo.puhelimet && henkilo.puhelimet.length > 0) {
+                loydetyt.push(henkilo);
+            }
+        }
+
+        return loydetyt;
+    } // haeKaikkiNumerot loppu
+} // luokan loppu
