@@ -1,0 +1,82 @@
+[
+    {
+      "ID": 1,
+      "merkki": "BigFlop Mark II",
+      "tyyppi": "pelikone",
+      "hinta": 36,
+      "lukumäärä": 7,
+      "värit": [
+        "oranssi",
+        "musta",
+        "punainen"
+      ],
+      "lisätiedot": {
+        "malli": "GT",
+        "energialuokka": "B",
+        "kommentti": "ei huomauttamista"
+      }
+    },
+    {
+      "ID": 2,
+      "merkki": "Hirmu II",
+      "tyyppi": "pelikone",
+      "hinta": 25,
+      "lukumäärä": 30,
+      "värit": [
+        "oranssi",
+        "punainen",
+        "valkoinen"
+      ],
+      "lisätiedot": {
+        "malli": "gold",
+        "energialuokka": "A",
+        "kommentti": "-"
+      }
+    },
+    {
+      "ID": 3,
+      "merkki": "MaxEffect 2000",
+      "tyyppi": "pöytäkone",
+      "hinta": 300,
+      "lukumäärä": 150,
+      "värit": [
+        "valkoinen",
+        "punainen",
+        "vihreä"
+      ],
+      "lisätiedot": {
+        "malli": "XL",
+        "energialuokka": "A+",
+        "kommentti": "huippulaite"
+      }
+    },
+    {
+      "ID": 4,
+      "merkki": "Xunil 4.7",
+      "tyyppi": "palvelin",
+      "hinta": 700,
+      "lukumäärä": 13,
+      "värit": [
+        "oranssi",
+        "punainen",
+        "valkoinen"
+      ],
+      "lisätiedot": {
+        "malli": "XL",
+        "energialuokka": "E",
+        "kommentti": "-"
+      }
+    },
+    {
+      "ID": 5,
+      "merkki": "BigFlop Mark II",
+      "tyyppi": "kannettava",
+      "hinta": 300,
+      "lukumäärä": 15,
+      "värit": [
+        "punainen",
+        "valkoinen",
+        "keltainen"
+      ]
+    }
+  ]
