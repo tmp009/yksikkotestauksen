@@ -254,4 +254,75 @@ describe('Testataan metodi haeNimi', ()=>{
     test('3. Jos parametri puuttuu, palauttaa `null`', ()=>{
         expect(muistio.haeNimi()).toBeNull();
     })
-})
+});
+
+describe('Testataan metodi haeKaikkiNumerot', ()=>{
+    test('1. haetaan kaikki numerot oletusdataa käyttäen', ()=>{
+        const muistio = new Puhelinmuistio(puhelimet);
+        expect(muistio.haeKaikkiNumerot()).toEqual(puhelimet);
+    });
+
+    test('2. puhelimia puuttuu', ()=>{
+        const testidata = [
+            {
+                "etunimi":"Leila",
+                "sukunimi":"Hökki",
+                "puhelimet":[
+                    {"tyyppi":"koti", "numero":"12345678"},
+                    {"tyyppi":"työ", "numero":"87654321"},
+                    {"tyyppi":"työ", "numero":"050403020"}
+                ]
+            },
+            {
+                "etunimi":"Matti",
+                "sukunimi":"Puro",
+                "puhelimet":[]
+            },
+            {
+                "etunimi":"Veera",
+                "sukunimi":"Virta"
+            }
+        ];
+        const odotettu = [
+            {
+                "etunimi":"Leila",
+                "sukunimi":"Hökki",
+                "puhelimet":[
+                    {"tyyppi":"koti", "numero":"12345678"},
+                    {"tyyppi":"työ", "numero":"87654321"},
+                    {"tyyppi":"työ", "numero":"050403020"}
+                ]
+            }
+        ];
+        
+        const muistio = new Puhelinmuistio(testidata); 
+        expect(muistio.haeKaikkiNumerot()).toEqual(odotettu);
+    });
+
+    test('3. Kaikki puhelimet puuttuvat', ()=>{
+        const testidata = [
+            {
+                "etunimi":"Leila",
+                "sukunimi":"Hökki",
+                "puhelimet":[]
+            },
+            {
+                "etunimi":"Matti",
+                "sukunimi":"Puro",
+                "puhelimet":[]
+            },
+            {
+                "etunimi":"Veera",
+                "sukunimi":"Virta"
+            }
+        ];
+        
+        const muistio = new Puhelinmuistio(testidata); 
+        expect(muistio.haeKaikkiNumerot()).toEqual([]);
+    });
+
+    test('4. Kaikki henkilöt puuttuvat', ()=>{
+        const muistio = new Puhelinmuistio([]); 
+        expect(muistio.haeKaikkiNumerot()).toEqual([]);
+    });
+});
