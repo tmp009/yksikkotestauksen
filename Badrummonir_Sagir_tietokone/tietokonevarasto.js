@@ -48,4 +48,12 @@ module.exports = class Tietokonevarasto {
         }        
         return summa;
     }
+
+    hae_tietokone_perusavaimella_ID(hakuavain){
+        if (!hakuavain) throw new Error('parametri puuttuu');
+
+        const kone = this.#tietokonedata.find(kone=>kone.ID===hakuavain);
+
+        return typeof kone !== 'undefined' ? kone : null;
+    }
 }

@@ -127,7 +127,7 @@ describe('Testataan metodi hae_tietokoneiden_kokonaishinta_hakuehdolla_tyyppi', 
     const varasto = new Tietokonevarasto(tietovarasto);
 
     test('1. Hae "pelikone" kokonaishinta', ()=>{ 
-        expect(varasto.hae_tietokoneiden_kokonaishinta_hakuehdolla_tyyppi("pelikone")).toEqual(25+36);
+        expect(varasto.hae_tietokoneiden_kokonaishinta_hakuehdolla_tyyppi("pelikone")).toEqual(61);
     });
 
     test('2. Hae "pöytäkone" kokonaishinta', ()=>{ 
@@ -166,6 +166,14 @@ describe('Testataan metodi hae_tietokone_perusavaimella_ID', ()=>{
     }
 
     test('1. Hae kone ID 1', ()=>{
-        expect(varasto.hae_tietokone_perusavaimella_ID(1)).toEqual(odotettu)
-    })
+        expect(varasto.hae_tietokone_perusavaimella_ID(1)).toEqual(odotettu);
+    });
+
+    test('2. Hae kone, joka ei ole tietovarastossa', ()=>{
+        expect(varasto.hae_tietokone_perusavaimella_ID(999)).toBeNull();
+    });
+
+    test('3. Parametri puuttuu', ()=>{
+        expect(()=>varasto.hae_tietokone_perusavaimella_ID()).toThrow('parametri puuttuu');
+    });
 })
