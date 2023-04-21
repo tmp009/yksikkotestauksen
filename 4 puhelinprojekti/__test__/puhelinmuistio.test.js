@@ -222,4 +222,36 @@ describe('Testataan metodi haeKaikkiNumerotTyypilla', ()=>{
     test('5. parametri puuttuu aiheuttaa poikkeuksen', ()=>{
         expect(()=>muistio.haeKaikkiNumerotTyypilla()).toThrow('Parametri puuttuu');
     });
+
+    const testiArvot = [
+        ['työ', odotettuTyo],
+        ['koti', odotettuKoti],
+        ['mobiili', odotettuMobiili],
+        ['x', []]
+    ]
+
+    test.each(testiArvot)('tyyppi=%s', (tyyppi, odotettu)=>{
+        expect(muistio.haeKaikkiNumerotTyypilla(tyyppi)).toEqual(odotettu);
+    });
+});
+
+describe('Testataan metodi haeNimi', ()=>{
+    const muistio = new Puhelinmuistio(puhelimet);
+    test('1. hae numeroon "87654321" omistaja', ()=>{
+        expect(muistio.haeNimi("87654321"))
+            .toEqual({"etunimi":"Leila", "sukunimi":"Hökki"});
+    });
+
+    test('1B. hae numeroon "9876543" omistaja', ()=>{
+        expect(muistio.haeNimi('9876543'))
+            .toEqual({"etunimi":"Matti", "sukunimi":"Puro"})
+    });
+
+    test('2. Jos numeroa ei löydy, palauttaa `null`', ()=>{
+        expect(muistio.haeNimi('999')).toBeNull();
+    })
+
+    test('3. Jos parametri puuttuu, palauttaa `null`', ()=>{
+        expect(muistio.haeNimi()).toBeNull();
+    })
 })

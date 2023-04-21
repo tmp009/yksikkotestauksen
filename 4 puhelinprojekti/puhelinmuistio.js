@@ -72,6 +72,21 @@ module.exports = class Puhelinmuistio{
                 }
             }
         }
-        return loydetyt
+        return loydetyt;
+    } // haeKaikkiNumerotTyypilla loppu
+
+    haeNimi(numero){
+        if (!numero) return null;
+        for (const henkilo of this.#puhelindata) {
+            for (const puhelin of henkilo.puhelimet) {
+                if (puhelin.numero===numero) {
+                    return {
+                        etunimi:henkilo.etunimi, 
+                        sukunimi:henkilo.sukunimi
+                    };
+                }
+            } // sisin for
+        } // uloin for loppu
+        return null; //numeroa ei löytynyt
     }
 }
