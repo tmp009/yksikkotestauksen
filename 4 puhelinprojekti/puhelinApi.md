@@ -77,6 +77,8 @@ palauttaa taulukon olioita. Oliossa on nimitiedot ja puhelinumero muodossa:
 
 Jos henkilöllö on samantyyppisiä numeroita useampia, tulee taulukoon kustakin oma olio
 
+Jos annetun tyyppiä ei löydy, palauttaa tyhjän taulukon
+
 Jos parametri puuttuu, aiheutuu poikkeus `'Parametri puuttuu'`.
 
 Esimerkiksi kaikki työnumerot:

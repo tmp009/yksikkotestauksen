@@ -153,10 +153,73 @@ describe('Testataan metodi haeHenkilönNumerotTyypilla yksittäin', ()=>{
 
 
 
-// describe('Testataan metodi haeHenkilönNumerotTyypilla testEach', ()=>{
-//     const muistio = new Puhelinmuistio(puhelimet);
+describe('Testataan metodi haeHenkilönNumerotTyypilla testEach', ()=>{
+    const muistio = new Puhelinmuistio(puhelimet);
 
-//     test('haetaan Leila Hökin työnumerot', ()=>{
-//         expect()
-//     })
-// });
+    const testdata_1_3 = [
+        // etunimi, sukunimi, tyyppi, odotettu
+        ['Leila', 'Hökki', 'työ', ["87654321", "050403020"]],
+        ['Matti', 'Puro', 'mobiili', ["05012345"]],
+        ['Leila', 'Hökki', 'koti', ["12345678"]]
+    ];
+
+    test.each(testdata_1_3)('Testit 1-3: etunimi=%s,sukunimi=%s,tyyppi=%s', 
+    (etunimi, sukunimi, tyyppi, odotettu) => {
+        expect(muistio.haeHenkilönNumerotTyypilla(etunimi, sukunimi, tyyppi))
+            .toEqual(odotettu)
+    });
+
+    const testdata_2_3 = [
+        // e       s      t
+        ['Matti', 'Puro', 'x'], 
+        ['Matti', 'x', 'mobiili'],
+         ['x', 'Puro', 'mobiili']
+    ];
+
+    test.each(testdata_2_3)('Testit 2-3: enimi=%s,snimi=%s,tyyppi=%s', 
+    (e, s, t) => {
+        expect(muistio.haeHenkilönNumerotTyypilla(e, s, t))
+            .toEqual([])
+    });
+
+});
+
+describe('Testataan metodi haeKaikkiNumerotTyypilla', ()=>{
+    const muistio = new Puhelinmuistio(puhelimet);
+
+    const odotettuTyo = [
+        {"etunimi":"Leila", "sukunimi":"Hökki","numero":{"tyyppi":"työ","puh":"87654321"}},
+        {"etunimi":"Leila", "sukunimi":"Hökki","numero":{"tyyppi":"työ","puh":"050403020"}},
+        {"etunimi":"Matti", "sukunimi":"Puro","numero":{"tyyppi":"työ","puh":"56789012"}}
+    ];
+
+    const odotettuKoti = [
+        {"etunimi":"Leila", "sukunimi":"Hökki","numero":{"tyyppi":"koti","puh":"12345678"}},
+        {"etunimi":"Matti", "sukunimi":"Puro","numero":{"tyyppi":"koti","puh":"9876543"}}
+    ];
+
+    const odotettuMobiili = [
+        {"etunimi":"Matti", "sukunimi":"Puro","numero":{"tyyppi":"mobiili","puh":"05012345"}}
+    ];
+
+    test('1. Haetaan työnumerot', ()=>{
+        expect(muistio.haeKaikkiNumerotTyypilla('työ')).toEqual(odotettuTyo);
+    });
+
+
+    test('2. Haetaan kotinumero ', ()=>{
+        expect(muistio.haeKaikkiNumerotTyypilla('koti')).toEqual(odotettuKoti);
+    });
+
+    test('3. Haetaan mobiilinumero', ()=>{
+        expect(muistio.haeKaikkiNumerotTyypilla('mobiili')).toEqual(odotettuMobiili);
+    });
+
+    test('4. Haetaan olematomalla', ()=>{
+        expect(muistio.haeKaikkiNumerotTyypilla('x')).toEqual([]);
+    });
+
+    test('5. parametri puuttuu aiheuttaa poikkeuksen', ()=>{
+        expect(()=>muistio.haeKaikkiNumerotTyypilla()).toThrow('Parametri puuttuu');
+    });
+})

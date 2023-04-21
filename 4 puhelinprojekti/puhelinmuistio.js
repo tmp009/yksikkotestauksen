@@ -50,4 +50,28 @@ module.exports = class Puhelinmuistio{
             throw new Error('Parametri puuttuu');
         }
     }
+
+    haeKaikkiNumerotTyypilla(tyyppi) {
+        if (!tyyppi) throw new Error('Parametri puuttuu');
+        
+        const loydetyt=[]
+
+        for (const henkilo of this.#puhelindata) {
+            if (henkilo.puhelimet) {
+                for (const puhelin of henkilo.puhelimet) {
+                    if (puhelin.tyyppi===tyyppi) {
+                        loydetyt.push({
+                            etunimi:henkilo.etunimi,
+                            sukunimi: henkilo.sukunimi,
+                            numero: {
+                                tyyppi:puhelin.tyyppi,
+                                puh: puhelin.numero
+                            }
+                        })
+                    }
+                }
+            }
+        }
+        return loydetyt
+    }
 }
