@@ -40,8 +40,6 @@ module.exports = class Tietokonevarasto {
         if (!koneet.length) throw new Error('annetulla avaimella ei löytynyt tietoja');
         
         let summa=0;
-
-        if (!koneet.length) return null;
         
         for (const kone of koneet) {
             summa+=kone.hinta;
