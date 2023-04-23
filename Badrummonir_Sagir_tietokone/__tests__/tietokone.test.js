@@ -176,4 +176,35 @@ describe('Testataan metodi hae_tietokone_perusavaimella_ID', ()=>{
     test('3. Parametri puuttuu', ()=>{
         expect(()=>varasto.hae_tietokone_perusavaimella_ID()).toThrow('parametri puuttuu');
     });
-})
+});
+
+describe('Testataan metodi hae_lisätiedot', ()=>{
+  const varasto = new Tietokonevarasto(tietovarasto);
+
+  test('1. Hae kone ID 4 lisätiedot', ()=>{
+        expect(varasto.hae_lisätiedot(4)).toEqual(
+            {
+            "malli": "XL",
+            "energialuokka": "E",
+            "kommentti": "-"
+            });
+    });
+
+  test('2. Hae kone ID 2 lisätiedot', ()=>{
+        expect(varasto.hae_lisätiedot(2)).toEqual(
+            {
+                "malli": "gold",
+                "energialuokka": "A",
+                "kommentti": "-"
+            });
+    });
+
+  test('3. Hae kone ID 5, jossa ei ole lisätiedot', ()=>{
+      expect(varasto.hae_lisätiedot(5)).toBeNull();
+  });
+  
+  test('4. Hae lisätiedot ilman hakuavain', ()=>{
+    expect(varasto.hae_lisätiedot()).toBeNull();
+  });
+  
+});

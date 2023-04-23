@@ -56,4 +56,14 @@ module.exports = class Tietokonevarasto {
 
         return typeof kone !== 'undefined' ? kone : null;
     }
+
+    hae_lisätiedot(hakuavain){
+        if (!hakuavain) return null;
+
+        const kone = this.#tietokonedata.find(kone=>kone.ID === hakuavain);
+
+        if (kone.lisätiedot) return kone.lisätiedot;
+
+        return null;
+    }
 }
