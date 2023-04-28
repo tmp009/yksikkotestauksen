@@ -18,11 +18,13 @@ module.exports = (avain, arvo)=>{
                             loydetyt.push(kaara);
                         }
                     }
+                    resolve(loydetyt);
                 }
                 else {
-                    loydetyt=autot;
+                    // loydetyt=autot;
+                    // muutettu, jotta voidaan testata rejectiä
+                    reject('parametri puuttuu')
                 }
-                resolve(loydetyt);
             }
         }); //readFile loppu
     });//Promise loppu

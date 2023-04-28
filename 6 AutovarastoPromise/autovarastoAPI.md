@@ -13,7 +13,7 @@
 **hae(avain, arvo)**
 funktio palauttaa hakuehdon täyttävät auto-oliot taulukkona. Jos hakuehdot täyttäviä autoja ei löydy, palauttaa tyhjän taulukon.
 
-Jos parametrit (tai parametri) puuttuvat tai avain ei ole  `malli` tai `rekisteri`, palautetaan kaikki autut taulokossa.
+Jos parametrit (tai parametri) puuttuvat tai avain ei ole  `malli` tai `rekisteri`, palautetaan 'parametri puuttuu'.
 
 parametrit:
 -   avain on joko `malli` tai `rekisteri`
@@ -61,11 +61,6 @@ palauttaa
 hae('malli', 'x')
 ```
 
-tai
-
-```js
-hae('x', 'ABC-1')
-```
 palauttaa []
 
 ### Esimerkki 5:
@@ -77,13 +72,10 @@ tai
 ```js
 hae('malli')
 ```
-palauttaa
+tai
 
-```json
-[
-    {"malli":"Hoppa", "rekisteri":"ABC-1"},
-    {"malli":"Kaara", "rekisteri":"XYZ-12"},
-    {"malli":"Hoppa", "rekisteri":"GTF-1"},
-    {"malli":"Bil", "rekisteri":"ÅL-23"}
-]
+```js
+hae('x', 'ABC-1')
+```
+palauttaa `parametri puuttuu`
 ```
