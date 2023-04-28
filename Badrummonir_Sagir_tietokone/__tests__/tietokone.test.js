@@ -118,7 +118,7 @@ describe('Testataan metodi hae_tietokoneen_värit', ()=>{
         expect(varasto.hae_tietokoneen_värit(1)).toEqual([]);
     });
 
-    test('4. ilman parametri', ()=>{
+    test('4. Puutuva parametri palautta tyhjä taulukko', ()=>{
         expect(varasto.hae_tietokoneen_värit()).toEqual([]);
     });
 });
@@ -134,7 +134,7 @@ describe('Testataan metodi hae_tietokoneiden_kokonaishinta_hakuehdolla_tyyppi', 
         expect(varasto.hae_tietokoneiden_kokonaishinta_hakuehdolla_tyyppi("pöytäkone")).toEqual(300);
     });
 
-    test('3. Aiheuttaa poikkeuksen "annetulla avaimella ei löytynyt tietoja"', ()=>{ 
+    test('3. Aiheuttaa poikkeuksen, jos ei löytyy tietoa ', ()=>{ 
         expect(()=>varasto.hae_tietokoneiden_kokonaishinta_hakuehdolla_tyyppi("x"))
             .toThrow('annetulla avaimella ei löytynyt tietoja');
     });
@@ -173,7 +173,7 @@ describe('Testataan metodi hae_tietokone_perusavaimella_ID', ()=>{
         expect(varasto.hae_tietokone_perusavaimella_ID(999)).toBeNull();
     });
 
-    test('3. Parametri puuttuu', ()=>{
+    test('3. Puutuva parametri aiheuttaa poikeuksen', ()=>{
         expect(()=>varasto.hae_tietokone_perusavaimella_ID()).toThrow('parametri puuttuu');
     });
 });

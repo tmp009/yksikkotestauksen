@@ -46,7 +46,7 @@ varasto.hae_tietokone_perusavaimella_ID(999);
 
 palauttaa: null
 
-### 3. Parametri puuttuu
+### 3. Puutuva parametri aiheuttaa poikeuksen
 
 ```js
 varasto.hae_tietokone_perusavaimella_ID();

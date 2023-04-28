@@ -12,8 +12,6 @@ hakee tietokoneen tiedon lukumäärä, kun tietokoneen merkki on sama kuin annet
 
 ## Testit
 
-Käytetään kaikissa oletusvarasto
-
 ```js
 const varasto = new Tietokonevarasto(tietovarasto);
 ```

@@ -122,7 +122,7 @@ palauttaa:
 []
 ```
 
-### 4. ilman parametri
+### 4. Puutuva parametri palautta tyhjä taulukko
 
 ```js
 varasto.hae_tietokoneen_värit();

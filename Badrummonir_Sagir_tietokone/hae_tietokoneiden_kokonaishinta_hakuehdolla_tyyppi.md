@@ -28,7 +28,7 @@ varasto.hae_tietokoneiden_kokonaishinta_hakuehdolla_tyyppi("pöytäkone");
 
 palauttaa: 300
 
-## 3. Aiheuttaa poikkeuksen "annetulla avaimella ei löytynyt tietoja"
+## 3. Aiheuttaa poikkeuksen, jos ei löytyy tietoa 
 
 ```js
 varasto.hae_tietokoneiden_kokonaishinta_hakuehdolla_tyyppi("x");
