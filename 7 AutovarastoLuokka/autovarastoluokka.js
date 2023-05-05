@@ -30,7 +30,7 @@ module.exports = class Varasto{
                     reject('parametri puuttuu');
                 }
             } catch (virhe) {
-                reject('lukuvirhe: ', virhe.message);
+                reject('lukuvirhe');
             }
         });
     } // hae-metodin loppu
