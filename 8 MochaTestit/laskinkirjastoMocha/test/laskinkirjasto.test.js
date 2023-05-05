@@ -127,3 +127,109 @@ describe('testataan puuttva parametri', function(){
         });
     });
 });
+
+describe('Testataan poikkeus "vain numerot sallittuja"', function(){
+    const testiArvot=[
+        { a:'1', b:'2', odotettu:'vain numerot sallittuja', teksti:"summa('1', '2')"},
+        { a:'a', b:1, odotettu:'vain numerot sallittuja', teksti:"summa('a', 1)"},
+        { a:1, b:'a', odotettu:'vain numerot sallittuja', teksti:"summa(1, 'a')"},
+        { a:'a', b:'b', odotettu:'vain numerot sallittuja', teksti:"summa('a', 'b')"},
+        { a:'', b:'', odotettu:'vain numerot sallittuja', teksti:"summa('', '')"},
+        { a:null, b:1, odotettu:'vain numerot sallittuja', teksti:"summa(null, 1)"},
+        { a:1, b:null, odotettu:'vain numerot sallittuja', teksti:"summa(1, null)"},
+        { a:undefined, b:1, odotettu:'vain numerot sallittuja', teksti:"summa(undefined, 1)"},
+        { a:1, b:undefined, odotettu:'vain numerot sallittuja', teksti:"summa(1, undefined)"}
+    ];
+
+    testiArvot.forEach(function(arvo){
+        it(`${arvo.teksti} aiheuttaa poikkeuksen ${arvo.odotettu}`, function () {
+            expect(function () {
+                summa(arvo.a, arvo.b);
+            }).to.throw(arvo.odotettu);
+        });
+    });
+});
+
+describe('testataan erotukset kokonaisluvuilla', function (){
+    const testiArvot=[
+        {a:1, b:1, odotettu:0},
+        {a:2, b:3, odotettu:-1},
+        {a:100, b:12, odotettu:88},
+        {a:2, b:-4, odotettu:6},
+        {a:-4, b:6, odotettu:-10},
+        {a:-3, b:-5, odotettu:2},
+        {a:0, b:0, odotettu:0},
+        {a:0, b:3, odotettu:-3},
+        {a:3, b:0, odotettu:3},
+        {a:0, b:-3, odotettu:3},
+        {a:-3, b:0, odotettu:-3},
+        {a:5, b:5, odotettu:0}
+    ];
+
+    testiArvot.forEach(function (arvo) {
+        it(`erotus(${arvo.a},${arvo.b})=${arvo.odotettu}`, function(){
+             expect(erotus(arvo.a,arvo.b)).to.equal(arvo.odotettu);
+        }) 
+     });
+});
+
+describe('testataan erotukset desimaaliluvuilla', function (){
+    const testiArvot=[
+        {a:2.5, b:3, odotettu:-0.5},
+        {a:2.5, b:3, odotettu:-0.5},
+        {a:-2.5, b:3, odotettu:-5.5},
+        {a:2.5, b:-3, odotettu:5.5},
+        {a:-2.5, b:-2.5, odotettu:0},
+        {a:2.5, b:-2.5, odotettu:5},
+        {a:2.4, b:-2.5, odotettu:4.9}
+    ];
+
+    testiArvot.forEach(function (arvo) {
+        it(`erotus(${arvo.a},${arvo.b})=${arvo.odotettu}`, function(){
+             expect(erotus(arvo.a,arvo.b)).to.be.closeTo(arvo.odotettu, 0.01);
+        }) 
+     });
+});
+
+describe('parametri puuttuu erotus', function(){
+    it('erotus() aiheuttaa poikkeuksen "parametri puuttuu"', function () {
+        expect(function(){
+            erotus();
+        }).to.throw('parametri puuttuu');
+    });
+
+    const testiArvot=[
+        {a:1, odotettu:'parametri puuttuu', teksti:'erotus(1)'},
+        {a:'a', odotettu:'parametri puuttuu', teksti:"erotus('a')"},
+        {a:'', odotettu:'parametri puuttuu', teksti:"erotus('')"},
+    ];
+    testiArvot.forEach(function (arvo) {
+        it(`${arvo.teksti} aiheuttaa poikkeuksen '${arvo.odotettu}'`, function () {
+            expect(function () {
+                erotus(arvo.a);
+            }).to.throw(arvo.odotettu);
+        });
+    });
+});
+
+describe('Testataan erotuksen poikkeus "vain numerot sallittuja"', function(){
+    const testiArvot=[
+        { a:'1', b:'2', odotettu:'vain numerot sallittuja', teksti:"erotus('1', '2')"},
+        { a:'a', b:1, odotettu:'vain numerot sallittuja', teksti:"erotus('a', 1)"},
+        { a:1, b:'a', odotettu:'vain numerot sallittuja', teksti:"erotus(1, 'a')"},
+        { a:'a', b:'b', odotettu:'vain numerot sallittuja', teksti:"erotus('a', 'b')"},
+        { a:'', b:'', odotettu:'vain numerot sallittuja', teksti:"erotus('', '')"},
+        { a:null, b:1, odotettu:'vain numerot sallittuja', teksti:"erotus(null, 1)"},
+        { a:1, b:null, odotettu:'vain numerot sallittuja', teksti:"erotus(1, null)"},
+        { a:undefined, b:1, odotettu:'vain numerot sallittuja', teksti:"erotus(undefined, 1)"},
+        { a:1, b:undefined, odotettu:'vain numerot sallittuja', teksti:"erotus(1, undefined)"}
+    ];
+
+    testiArvot.forEach(function(arvo){
+        it(`${arvo.teksti} aiheuttaa poikkeuksen ${arvo.odotettu}`, function () {
+            expect(function () {
+                erotus(arvo.a, arvo.b);
+            }).to.throw(arvo.odotettu);
+        });
+    });
+});

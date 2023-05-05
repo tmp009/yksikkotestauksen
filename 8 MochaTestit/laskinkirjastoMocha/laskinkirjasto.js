@@ -7,7 +7,7 @@ function summa(a, b) {
 
     if (typeof a !== 'number' || typeof b !== 'number')
     {
-        throw new Error("vain numero sallittuja")
+        throw new Error("vain numerot sallittuja")
         
     }
 
@@ -22,7 +22,7 @@ function erotus(a, b) {
 
     if (typeof a !== 'number' || typeof b !== 'number')
     {
-        throw new Error("vain numero sallittuja")
+        throw new Error("vain numerot sallittuja")
         
     }
 
