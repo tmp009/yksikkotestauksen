@@ -88,3 +88,42 @@ describe('testataan taulukossa olevilla arvoilla jestmäisesti', function(){
         }) 
      });
 });
+
+describe('testataan summa desimaaleilla', function(){
+    const testiArvot=[
+        {a:10, b:11.5, odotettu:21.5},
+        {a:2.5, b:3, odotettu:5.5},
+        {a:-2.5, b:3, odotettu:0.5},
+        {a:2.5, b:-3, odotettu:-0.5},
+        {a:-2.5, b:-2.5, odotettu:-5.0},
+        {a:2.5, b:-2.5, odotettu:0},
+        {a:2.4, b:-2.5, odotettu:-0.1},
+    ];
+
+    for(const arvo of testiArvot) {
+        it(`summa(${arvo.a},${arvo.b})=${arvo.odotettu}`, function(){
+             expect(summa(arvo.a,arvo.b)).to.be.closeTo(arvo.odotettu, 0.01);
+        }) 
+    };
+});
+
+describe('testataan puuttva parametri', function(){
+    it('summa() aiheuttaa poikkeuksen "parametri puuttuu"', function () {
+        expect(function(){
+            summa();
+        }).to.throw('parametri puuttuu');
+    });
+
+    const testiArvot=[
+        {a:1, odotettu:'parametri puuttuu', teksti:'summa(1)'},
+        {a:'a', odotettu:'parametri puuttuu', teksti:"summa('a')"},
+        {a:'', odotettu:'parametri puuttuu', teksti:"summa('')"},
+    ];
+    testiArvot.forEach(function (arvo) {
+        it(`${arvo.teksti} aiheuttaa poikkeuksen '${arvo.odotettu}'`, function () {
+            expect(function () {
+                summa(arvo.a);
+            }).to.throw(arvo.odotettu);
+        });
+    });
+});
