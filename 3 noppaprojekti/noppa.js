@@ -25,7 +25,7 @@ class Noppa {
     get pisteet() { return this.#silmaluku }
 
     heitaNoppaa() {
-        this.#silmaluku = Math.ceil(Math.random() * this.ylaraja)
+        this.#silmaluku = Math.floor(Math.random() * this.ylaraja+1)
     }
 
     toString() {
